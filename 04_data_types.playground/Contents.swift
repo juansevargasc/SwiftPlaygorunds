@@ -45,4 +45,17 @@ let presentacion = (nombre: "Juanse", apellido: "Vargas", edad: 26)
 print("Hola soy \(presentacion.nombre) \(presentacion.apellido) y tengo \(presentacion.edad) años")
 
 
+//Optionals y Nil
+let possibleAge = "31"
+let convertedAge = Int(possibleAge)
 
+let possibleString = "Paco"
+let convertedString = Int(possibleString)
+
+var serverResponseCode: Int? = 404
+serverResponseCode = nil
+
+var surveyAnswer: String?
+
+surveyAnswer = "42"
+print(surveyAnswer)
