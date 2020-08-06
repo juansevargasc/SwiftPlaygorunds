@@ -39,6 +39,10 @@ print("El código del estado es \(http200Status.description)")
 
 
 
-//Ejercicio: Edad nombre y apellido
+//Reto: Edad nombre y apellido
 let presentacion = (nombre: "Juanse", apellido: "Vargas", edad: 26)
+
+print("Hola soy \(presentacion.nombre) \(presentacion.apellido) y tengo \(presentacion.edad) años")
+
+
 
