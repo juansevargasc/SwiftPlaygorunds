@@ -45,4 +45,64 @@ let presentacion = (nombre: "Juanse", apellido: "Vargas", edad: 26)
 print("Hola soy \(presentacion.nombre) \(presentacion.apellido) y tengo \(presentacion.edad) años")
 
 
+//Optionals y Nil
+let possibleAge = "31"
+let convertedAge = Int(possibleAge)
 
+let possibleString = "Paco"
+let convertedString = Int(possibleString)
+
+var serverResponseCode: Int? = 404
+serverResponseCode = nil
+
+var surveyAnswer: String?
+
+surveyAnswer = "42"
+print(surveyAnswer!)
+
+
+//Force Unwrapping de una variable optional
+if convertedAge != nil
+{
+    print("La edad del usuario no es nula: \(convertedAge!) ") //Convierte optional directamente a Int
+}else{
+    print("La edad del usuario es nula")
+}
+
+
+//Optional Binding - Genera una variable a partir de otra. La vincula, la bindea.
+if let actualAnswer = surveyAnswer
+{
+    //Al llegar aquí SurveyAnswer no es nulo
+    print("String tiene valor \(surveyAnswer!) tiene el valor \(actualAnswer)")
+}else{
+    //Al llegar aquí, surveyAnswer = nil
+    print("El string surveyAnswer es nil")
+}
+//Sintaxis anidada
+if let firstNumber = Int("4"),
+    let secondNumber = Int("42"),
+        firstNumber < secondNumber && secondNumber < 100{
+            print("\(firstNumber) < \(secondNumber) < 100")
+            
+}
+
+//Unwrapping forzado
+let possibleString2: String? = "Un String opcional"
+let forcedString: String = possibleString2!
+
+//Unwrapping implícito
+let assumedString: String! = "Un String unwrapped de forma implícita a partir de un optional"
+let implicitString: String = assumedString
+
+if assumedString != nil
+{
+    print(assumedString!)
+}
+
+if let definitiveString = assumedString
+{
+    print("Definitive Opt Binding: \(definitiveString)")
+}
+
+print(assumedString)

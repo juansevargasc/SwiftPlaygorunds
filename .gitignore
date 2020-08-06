@@ -1,2 +1,6 @@
 .DS_Store
 /playground.xcworkspace
+*.xcworkspace
+*.xcuserstate
+*/playground.xcworkspace/xcuserdata/juansevargas.xcuserdatad/UserInterfaceState.xcuserstate
+
