@@ -59,3 +59,25 @@ var surveyAnswer: String?
 
 surveyAnswer = "42"
 print(surveyAnswer)
+
+
+//Force Unwrapping de una variable optional
+if convertedAge != nil
+{
+    print("La edad del usuario no es nula: \(convertedAge!) ") //Convierte optional directamente a Int
+}else{
+    print("La edad del usuario es nula")
+}
+
+//Optional Binding - Genera una variable a partir de otra. La vincula, la bindea.
+if let actualAnswer = surveyAnswer
+{
+    //Al llegar aquí SurveyAnswer no es nulo
+    print("String tiene valor \(surveyAnswer) tiene el valor \(actualAnswer)")
+}else{
+    //Al llegar aquí, surveyAnswer = nil
+    print("El string surveyAnswer es nil")
+}
+
+
+
