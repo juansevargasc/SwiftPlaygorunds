@@ -78,6 +78,10 @@ if let actualAnswer = surveyAnswer
     //Al llegar aquí, surveyAnswer = nil
     print("El string surveyAnswer es nil")
 }
-
-
-
+//Sintaxis anidada
+if let firstNumber = Int("4"),
+    let secondNumber = Int("42"),
+        firstNumber < secondNumber && secondNumber < 100{
+            print("\(firstNumber) < \(secondNumber) < 100")
+            
+}
