@@ -46,3 +46,23 @@ do{
 }catch ErrorSandwich.noHayPlatosLimpios{
     print("Lavar los platos")
 }
+
+
+
+// Aserciones (debug -> fase de desarrollo) y Precondiciones (build -> fase de producción)
+
+let age = 5
+//assert(age >= 0, "La edad no puede ser negativa")
+precondition(age >= 0, "La edad no puede ser negativa precond.")
+ 
+//... el código sigue
+
+if age > 10
+{
+    print("Puedes subir a la montaña rusa")
+}else if age >= 0{
+    print("Eres demasiado pequeño para subir a la montaña rusa")
+}else{
+    assertionFailure("La edad de una persona no puede ser negativa")
+}
+
