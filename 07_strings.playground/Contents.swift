@@ -21,3 +21,93 @@ let heart = "\u{1F496}"
 //Ejercicio
 let nameAndCountry = "Hola soy Juanse, de \u{1F1E8}\u{1F1F4}"
 
+
+
+//Inicialización y mutabilidad
+var emptyString = ""
+var anotherEmptyString = String()
+
+if emptyString.isEmpty
+{
+    print("No hay nada aquí.")
+}else{
+    print("El string tiene un valor")
+}
+
+var newSomeString = "Un caballo"
+newSomeString += "y un carruaje"
+newSomeString += "y un soldado"
+
+let aString = "y Ricardo Celis"
+
+//Cada variable es independiente. Tipo de dato evaluado.
+var a = "A"
+var b = "B"
+print("a vale \(a) y b vale \(b)")
+b = a
+print("a vale \(a) y b vale \(b)")
+b = "C"
+print("a vale \(a) y b vale \(b)")
+a = "D"
+print("a vale \(a) y b vale \(b)")
+
+//Characters
+let name = "Juan Gabriel 😎"
+for ch in name {
+    print(ch)
+}
+
+print("Number: \(name.count)")
+
+let exclamationMark: Character = "!"
+
+let nameChars: [Character] = ["J", "U", "A", "N"]
+var nameString = String(nameChars) // El arreglo se transformó en String
+
+let compoundName = "Juan " + "Gabriel"
+nameString + String(exclamationMark)
+
+nameString.append(exclamationMark) //Concatenar caracter
+
+let multiplier = 3
+var message = "El producto de \(multiplier) x 3.5 da \(Double(multiplier)*3.5)" //multiplier es Integer, para hacer multplier*3.5, debo hacer cast a multiplier (subirlo de nivel para poder compatibilizar)
+
+3 * 3.5 //Pero puedo hacer la operación con los números en sí.
+
+message.append(exclamationMark)
+
+//Ejercicio 1
+//let bandera = "\u{1F1E8}\u{1F1F4}"
+let myNameChar: [Character] = ["J", "U", "A", "N", "S", "E", "\u{1F1E8}\u{1F1F4}"]
+let myName = String(myNameChar)
+
+//Ejercicio 2. n = 36
+print("\nTabla del 36")
+for n in 0...10 {
+    print("36 X \(n) = \(36 * n)")
+}
+print("")
+
+
+//Índices de Strings
+let greeting = "Hola, ¿que tal?"
+greeting[greeting.startIndex]
+greeting[greeting.index(before: greeting.endIndex)]
+greeting[greeting.index(after: greeting.startIndex)]
+
+for idx in greeting.indices {
+    print("\(greeting[idx])", terminator: "") //Tener en cuenta que idx no son posiciones de números enteros de 0 a n
+}
+
+var welcome = "Hola"
+welcome.insert("!", at: welcome.endIndex)
+welcome.insert(contentsOf: " que tal" , at: welcome.index(before: welcome.endIndex))
+
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+welcome
+
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+//Rango desde el final menos 6 (desde la 'u') hasta el final del string sin incluir porque el último caracter es n-1
+
+welcome.removeSubrange(range) //Retira el rango del string dado. No se pueden investigar los número porque también son Raw bits
+
