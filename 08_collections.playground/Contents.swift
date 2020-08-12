@@ -30,3 +30,36 @@ shoppingList.count
 //Ejercicio
 var family: [String] = ["Jose", "Maria Helena", "Gina", "Nelson", "Jorge", "Diana", "Jimeno", "Sarita", "Sandra"]
 family.count
+
+
+
+//Acceder y modificar elmentos de un Array
+if shoppingList.isEmpty
+{
+    print("La lista de la compra está vacía")
+}else{
+    print("Mandemos a Ricardo a comprar")
+}
+
+shoppingList.append("Coke")
+shoppingList.count
+
+shoppingList += ["Totopos", "Guacamole", "Pico de gallo"]
+shoppingList.count
+
+var firstElment = shoppingList[0]
+shoppingList[0] = "Huevos" //Sobreescribe la posición 0 del array
+shoppingList
+
+shoppingList[5]
+shoppingList[4...6]
+shoppingList[4...6] = ["Naranja", "Platano", "Mango"]
+shoppingList
+
+let pepper = shoppingList.remove(at: 1)
+shoppingList
+shoppingList.count
+
+let _ = shoppingList.removeLast()
+shoppingList
+shoppingList.count
