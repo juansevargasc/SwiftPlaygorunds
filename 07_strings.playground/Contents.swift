@@ -99,6 +99,8 @@ for idx in greeting.indices {
     print("\(greeting[idx])", terminator: "") //Tener en cuenta que idx no son posiciones de números enteros de 0 a n
 }
 
+print("")
+
 var welcome = "Hola"
 welcome.insert("!", at: welcome.endIndex)
 welcome.insert(contentsOf: " que tal" , at: welcome.index(before: welcome.endIndex))
@@ -111,3 +113,53 @@ let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
 
 welcome.removeSubrange(range) //Retira el rango del string dado. No se pueden investigar los número porque también son Raw bits
 
+
+//Substring
+greeting
+let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
+let firstPart = greeting[..<index] //Substring. Pequqeña parte del espacio de memoria del String original.
+
+let newString = String(firstPart) //String. Deben ser convertido los substrings a Strings
+
+
+//Prefijos y Sufijos
+let newGreeting = "Hola, soy Juanse"
+newGreeting.hasPrefix("Hola")
+newGreeting.hasSuffix("r")
+
+let collection = [
+        "Act 1 Scene 1", "Act 1 Scene 2", "Act 1 Scene 3",
+        "Act 2 Scene 1", "Act 2 Scene 2",
+        "Act 3 Scene 1", "Act 3 Scene 2", "Act 3 Scene 3", "Act 3 Scene 4"
+]
+
+var act1SceneCount = 0
+for scene in collection {
+    if scene.hasPrefix("Act 2")
+    {
+        act1SceneCount += 1
+    }
+}
+print("Número de escenas del Acto 1: \(act1SceneCount)")
+
+
+//Unicode
+
+//UTF 8
+//UTF 16
+//Unicode: UTF 36
+let ghost = "¡Fantasma! 👻"
+for codeUnit in ghost.utf8
+{
+    print(codeUnit, terminator: " ")
+}
+print("")
+for codeUnit in ghost.utf16
+{
+    print(codeUnit, terminator: " ")
+}
+print("")
+for codeUnit in ghost.unicodeScalars
+{
+    print(codeUnit, terminator: " ")
+}
