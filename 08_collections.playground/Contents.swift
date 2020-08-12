@@ -63,3 +63,22 @@ shoppingList.count
 let _ = shoppingList.removeLast()
 shoppingList
 shoppingList.count
+
+
+//Iterando en Arrays
+for item in shoppingList
+{
+    print(item)
+}
+
+for (idx, item) in shoppingList.enumerated()
+{
+    print("Item: \(idx + 1): \(item)")
+}
+
+
+//Ejercicio
+for (ind, member) in family.enumerated()
+{
+    print("Family member: \(ind + 1): \(member)")
+}
