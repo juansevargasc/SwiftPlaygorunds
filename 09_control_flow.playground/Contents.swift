@@ -244,3 +244,73 @@ case (let departureCity, _, _):
 
 print(message)
 
+//Control de sentencias - Control Transfer Sentences: continue, break, fallthrough, return, throw
+let sentence = "Las mentes grandes piensan igual"
+var filteredSentence = ""
+let charactersToRemove: [Character] = ["a", "e", "i", "o", "u"]
+for ch in sentence
+{
+    if charactersToRemove.contains(ch)
+    {
+        //No hacer nada
+        continue
+    }
+    filteredSentence.append(ch)
+    
+    if ch == "d"
+    {
+        break
+    }
+}
+filteredSentence
+
+
+//Fallthrough
+let integerToDescribe = 5
+var description = "El número \(integerToDescribe) es"
+switch integerToDescribe
+{
+    case 2, 3, 5, 7, 11, 13, 17, 19:
+        description += " un número primo y"
+        fallthrough
+    default:
+        description += " un número entero"
+}
+
+print(description)
+print("")
+
+//Guard, Return
+var people = ["name" : "Juan Gabriel", "age" : 31, "isMale" : true] as [String : Any]
+
+func testUserValidation( person : [String : Any] )
+{
+    guard let surname = people["surname"] else{
+        print("El nombre es desconocido")
+        return
+    }
+    //Aquí existe surname.
+    print(surname)
+    guard let age = person["age"] else
+    {
+        print("La edad es desconocida")
+        return
+    }
+}
+
+people["surname"] = "gomila"
+testUserValidation(person: people)
+
+//El guard transfiere el control después de la llave.
+
+
+//Available API Manejo de versiones
+
+if #available(iOS 12, macOS 10.12, *)
+{
+    //Ejectura las acciones a lo iOS 12 o posterior y a lo macOS 10.12 o posterior
+}else
+{
+    //Mantener código viejo con versiones anteriores de iOS, macOS...
+}
+//Para asegurar que la mayor parte del código sirva en los dispositivos
