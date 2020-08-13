@@ -182,7 +182,7 @@ case(_, 0):
     print("El punto \(somePoint) se halla sobre el eje de las X")
 case(0, _):
     print("El punto \(somePoint) se halla sobre el eje de las Y")
-case(-2...2, -2...2):
+case(-2...2, -2...2): //Con intervalos
     print("El punto \(somePoint) se halla sobre el cuadrado de lado 4")
 default:
     print("El punto está en algún lado")
@@ -226,4 +226,21 @@ switch stillAnotherPoint
         print("No está sobre el eje")
 }
 
-//TODO: Switch ejemplo
+//TODO: Switch ejemplo para proyectos futuros
+let flightStatus = (departureCity: "Paris", destinationCity: "Madrid", status: "con retraso")
+let message: String
+
+switch flightStatus
+{
+case ("Paris", "", _):
+    message = "Por favor escoja una ciudad de destino."
+case("Paris", let city, ""):
+    message = "No hay información del estado de vuelo a la ciudad de \(city). El aeropuerto de París le ofrece disculpas por las molestias. Intente más tarde por favor."
+case ("Paris", let city, let status):
+    message = "Su vuelo a la ciudad \(city) está \(status)"
+case (let departureCity, _, _):
+    message = "Ud. está en el aeropuerto de \(departureCity). No hay información disponible en el momento"
+}
+
+print(message)
+
