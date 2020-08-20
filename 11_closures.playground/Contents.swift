@@ -56,7 +56,7 @@ let digitNames = [0:"Cero", 1:"Uno", 2:"Dos", 3:"Tres", 4:"Cuatro", 5:"Cinco", 6
 
 let numbers = [16, 58, 510, 2127]
 
-let numberStrings = numbers.map({ (number) -> String in // numberStrings guarda un string a partir de number (Cada number está guardado en numbers). Map es como, a cada elemento de numbers (arreglo) asígnele un String. Se guarda un arreglo de Strings
+let numberStrings = numbers.map({ (number) -> String in // numberStrings guarda un string a partir de number (Cada number está guardado en numbers). Map es como, a cada elemento de numbers (arreglo) asígnele un String. Se guarda un arreglo de Strings. Pero map depende de lo que el trailing closure haga. Map, mapea según el código del closure en síntesis.
 
     var number = number
     var output = ""
@@ -67,3 +67,23 @@ let numberStrings = numbers.map({ (number) -> String in // numberStrings guarda 
     }while number > 0
     return output
 })
+
+//Ejercicio
+let numbersIntegers = [-1, 2, 34, 4566, -755]
+let numberStrings2 = numbersIntegers.map({ (number) -> String in
+    var number = number
+    var output = ""
+    if number < 0
+    {
+        number *= -1
+        output += "-"
+    }
+    
+    repeat{
+        output = digitNames[number % 10]! + output
+        number /= 10
+        
+    }while number > 0
+    return output
+})
+
