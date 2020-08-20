@@ -201,22 +201,24 @@ func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int)
 
 printMathResult(multiplyTwoInts, 5, 9)
 
-func stepForward(_ input: Int) -> Int
-{
-    return input + 1
-}
 
-func stepBackward(_ input: Int) -> Int
-{
-    return input - 1
-}
 
 func chooseStepFunction(backward: Bool) -> (Int) -> Int //Devuelve una función que acepta un (Int) como parámetro de entrada y un Int como parámetro de salida
 {
-    return backward ? stepBackward : stepForward
-}
+    func stepForward(_ input: Int) -> Int
+    {
+        return input + 1
+    }
 
-var value = -6
+    func stepBackward(_ input: Int) -> Int
+    {
+        return input - 1
+    }
+    
+    return backward ? stepBackward : stepForward
+} // Se recomienda que si la función retorna una función, esta o estas funciones que retorne estén dentro de la función principal.
+
+var value = 10
 
 let moveNearerZero = chooseStepFunction(backward: value > 0)
 
