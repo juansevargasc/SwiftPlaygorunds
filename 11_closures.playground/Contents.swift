@@ -73,10 +73,11 @@ let numbersIntegers = [-1, 2, 34, 4566, -755]
 let numberStrings2 = numbersIntegers.map({ (number) -> String in
     var number = number
     var output = ""
+    var isNegative = false
     if number < 0
     {
         number *= -1
-        output += "-"
+        isNegative = true
     }
     
     repeat{
@@ -84,6 +85,9 @@ let numberStrings2 = numbersIntegers.map({ (number) -> String in
         number /= 10
         
     }while number > 0
+    
+    output = isNegative ? "-" + output : output
+    
     return output
 })
 
