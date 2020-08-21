@@ -91,3 +91,24 @@ let numberStrings2 = numbersIntegers.map({ (number) -> String in
     return output
 })
 
+//Capturing Closures
+//Están capturando los valores que le rodean
+func makeIncrementer(forIncrement amount: Int) -> () -> Int{
+    var runningTotal = 0
+    func incrementer() -> Int{
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+
+let incrementByTen = makeIncrementer(forIncrement: 10)
+incrementByTen() //incrementByTen guarda la función (o closure) que le devuelve la función makeIncrementer
+incrementByTen()
+incrementByTen() //runningTotal estaba en 10 ahora es 20. runningTotal estaba en 20 ahora es 30
+
+let incrementBySeven = makeIncrementer(forIncrement: 7)
+incrementBySeven() //Tiene su propia runningTotal, no es el mismo de la variable incrementBytTen
+incrementBySeven()
+
+
