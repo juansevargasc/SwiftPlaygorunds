@@ -6,7 +6,7 @@ enum SomeEnumeration{
 }
 
 
-enum CompassPoint
+enum CompassPoint: String
 {
     case north
     case south
@@ -14,9 +14,9 @@ enum CompassPoint
     case west
 }
 
-enum Planet
+enum Planet: Int
 {
-    case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
 }
 
 var directionToGo = CompassPoint.east
@@ -94,4 +94,44 @@ for notas in NotasMusicales.allCases
 print("Número de notas: \(NotasMusicales.allCases.count)")
 
 
-//
+//Enumerations. Código de barras
+enum Barcode
+{
+    case upc(Int, Int, Int, Int)
+    case qr(String)
+}
+var productBarcode = Barcode.upc(8, 85909, 51226, 3)
+//productBarcode = .qr("ADRTFF")
+
+switch productBarcode {
+case let .upc(numberSystem, manufacturer, product, check): //case let, deja asignar let a todos los argumentos ()
+    print("UPC: \(numberSystem), \(manufacturer), \(product), \(check)")
+case .qr(let productCode):
+    print("QR: \(productCode)")
+}
+
+//Enumeradores con raw values - raw: Crudo, sin porcesar
+enum ASCIIControlCharacter: Character
+{
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+
+let earthOrder = Planet.earth.rawValue
+let northDirection = CompassPoint.north.rawValue
+let possiblePlantet = Planet(rawValue: 5) //Esta constante es un valor optional que trae el enumerado
+
+
+let planetPosition = 3
+if let anyPlanet = Planet(rawValue: planetPosition)
+{
+    switch anyPlanet {
+    case .earth: //Si anyPlanet == .earth (o Planet.earth) que en el caso de Planet(rawValue: 3) es verdad
+        print("La tierra es segura")
+    default:
+        print("No es seguro ir a este planeta")
+    }
+}else{
+    print("El planeta indicado no existe...")
+}
