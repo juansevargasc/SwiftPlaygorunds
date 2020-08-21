@@ -117,7 +117,7 @@ func greeting(_ person: String, from hometown: String) -> String //_ omite etiqu
 }
 
 greeting("Juan Gabriel", from: "Mallorca")
-
+//Parámetro variadico
 func mean(_ numbers: Double...) -> Double //Múltiples parámetros, mínimo uno sintaxis: tag name: type...
 {
     var total: Double = 0
