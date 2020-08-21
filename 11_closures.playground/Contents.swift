@@ -112,3 +112,43 @@ incrementBySeven() //Tiene su propia runningTotal, no es el mismo de la variable
 incrementBySeven()
 
 
+//Escaping Closures
+//Le permiten escapar un closure
+
+var completionHandlers: [() -> Void] = [] // Arreglo de closures
+
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void)
+{
+    completionHandlers.append(completionHandler) //Este que es el escapado, lo guarda en el arreglo y lo puede ejecutar más tarde
+    
+}
+
+completionHandlers.count
+
+func someFunctionWithNoneEscapingClosure(closure: () -> Void)
+{
+    closure()
+}
+
+class SomeClass{
+    var x = 10
+    func doSomething()
+    {
+        someFunctionWithEscapingClosure {
+            self.x = 100 //Tiene que especificar
+        }
+        someFunctionWithNoneEscapingClosure {
+            x = 200
+        }
+    }
+}
+
+let instance = SomeClass()
+print(instance.x)
+
+instance.doSomething()
+print(instance.x)
+
+completionHandlers.count
+completionHandlers.first?() //Es un Optional por eso el ?. Los paréntesis son ejecutar el closure, invocarlo
+print(instance.x)
