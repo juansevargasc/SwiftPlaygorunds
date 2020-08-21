@@ -55,4 +55,43 @@ for beverage in Beverage.allCases
 
 
 //Ejercicio
-enum 
+enum Destinations: CaseIterable
+{
+    case Bogota
+    case CiudadDeMexico
+    case Lima
+    case SaoPaulo
+    case Madrid
+    case Santiago
+    case Caracas
+    case SanSalvador
+}
+
+var destination = Destinations.Lima
+switch destination
+{
+    case .Bogota:
+        print("Aeropuerto habilitado desde Octubre para vuelos internacionales.")
+    case .Lima:
+        print("Aeropuerto habilitado!")
+    case .CiudadDeMexico:
+        print("Aeropuerto habilitado!")
+    default:
+        print("Aeropuerto aún no habilitado para vuelos internacionales por la pandemia.")
+}
+
+
+//Reto
+enum NotasMusicales: CaseIterable
+{
+    case A, B, C, D, E, F, G
+}
+
+for notas in NotasMusicales.allCases
+{
+    print(notas)
+}
+print("Número de notas: \(NotasMusicales.allCases.count)")
+
+
+//
