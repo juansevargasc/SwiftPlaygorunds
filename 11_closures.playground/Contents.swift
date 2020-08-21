@@ -152,3 +152,5 @@ print(instance.x)
 completionHandlers.count
 completionHandlers.first?() //Es un Optional por eso el ?. Los paréntesis son ejecutar el closure, invocarlo
 print(instance.x)
+
+//Enumerado, clase vaga
