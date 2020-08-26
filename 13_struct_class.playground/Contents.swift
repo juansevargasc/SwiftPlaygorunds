@@ -43,3 +43,6 @@ print(someVideoMode.frameRate)
 
 //Sin embargo si una estructura es constante, no se pueden cambiar los atributos:
 //someResolution.height = 30.0
+
+
+//Structs. Estructuras, datos copiados por valor
