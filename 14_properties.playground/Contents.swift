@@ -85,6 +85,7 @@ cuboid.volume
 //Ejercicio - Ejemplo de computed property
 
 
+//Property observers
 //Willset //Didset
 class StepCounter
 {
@@ -107,4 +108,59 @@ stepCounter.totalSteps = 520
 stepCounter.totalSteps += 1234
 
 //TODO: Hacer dos observers para la vida en un juego
+class Game
+{
+    var life: Int = 100{
+        willSet(newLifeStatus)
+        {
+            if newLifeStatus > 100
+            {
+                print("El porcentaje de vida no puede ser mayor a 100")
+            }
+        }
+        didSet
+        {
+            if life <= 0
+            {
+                print("Juego terminado!")
+            }
+        }
+    }
+}
 
+print("")
+
+let myGame = Game()
+myGame.life = 101
+myGame.life = 78
+myGame.life = 0
+myGame.life = -11
+
+
+//Type properties
+struct SomeStruct
+{
+    var counter = 0
+    static var storedTypeProperty = "SOME VALUE" //Común a todas las instancias
+    static var computedTypeProperty: Int{
+        return 1
+    }
+}
+
+var instanceStr = SomeStruct()
+var otherStr = SomeStruct()
+SomeStruct.computedTypeProperty
+
+class SomeClass
+{
+    static var storedTypeProperty = "Some Value"
+    static var computedTypeProperty: Int{ //Esta no puede ser sobreescrita por clase padre o hijo
+        return -9
+    }
+    
+    class var overrideableComputedTypeProperty:Int{ //Esta la pueden sobreescribir los hijos
+        return 108
+    }
+}
+
+//Hacer presupuesto familiar usando static 
