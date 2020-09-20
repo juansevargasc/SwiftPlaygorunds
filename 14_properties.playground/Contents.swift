@@ -85,3 +85,26 @@ cuboid.volume
 //Ejercicio - Ejemplo de computed property
 
 
+//Willset //Didset
+class StepCounter
+{
+    var totalSteps: Int = 0{
+        willSet(newTotalSteps)
+        {
+            print("El número de pasos va a subir hasta \(newTotalSteps)")
+        }
+        didSet{
+            if totalSteps > oldValue{
+                print("El número de pasos ha incrementado en \(totalSteps - oldValue)")
+            }
+        }
+    }
+}
+
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+stepCounter.totalSteps = 520
+stepCounter.totalSteps += 1234
+
+//TODO: Hacer dos observers para la vida en un juego
+
