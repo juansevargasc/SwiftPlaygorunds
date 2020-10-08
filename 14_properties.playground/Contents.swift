@@ -133,9 +133,9 @@ print("")
 let myGame = Game()
 myGame.life = 101
 myGame.life = 78
-myGame.life = 0
+myGame.life = 0  
 myGame.life = -11
-
+ 
 
 //Type properties
 struct SomeStruct
@@ -149,8 +149,20 @@ struct SomeStruct
 
 var instanceStr = SomeStruct()
 var otherStr = SomeStruct()
-SomeStruct.computedTypeProperty
+SomeStruct.computedTypeProperty //La única manera de poder acceder a la variable static.
 
+enum SomeEnum
+{
+    static var storedTypeProperty = "Some value"
+    static var computedTypeProperty: Int{
+        return 5
+    }
+}
+
+SomeEnum.computedTypeProperty
+SomeEnum.storedTypeProperty
+
+//Static: variable static es común a todos los objetos instanciados a partir de esa clase.
 class SomeClass
 {
     static var storedTypeProperty = "Some Value"
@@ -158,9 +170,28 @@ class SomeClass
         return -9
     }
     
-    class var overrideableComputedTypeProperty:Int{ //Esta la pueden sobreescribir los hijos
+    class var overrideableComputedTypeProperty: Int{ //Esta la pueden sobreescribir los hijos
         return 108
     }
 }
 
-//Hacer presupuesto familiar usando static 
+//TODO: Hacer presupuesto familiar usando  static
+class FamilyMember
+{
+    static var budget = 100
+    var name = ""
+    
+    func spend(_ money: Int, in element: String) -> Void
+    {
+        FamilyMember.budget -= money
+        print("\(name) compró \(element), presupuesto restante: \(FamilyMember.budget)")
+    }
+}
+
+let sarita = FamilyMember(), juanse = FamilyMember()
+sarita.name = "Sarita"
+juanse.name = "Juanse"
+
+sarita.spend(21, in: "pastel")
+
+
