@@ -85,4 +85,71 @@ controllerStatus.next()
 controllerStatus.next()
 controllerStatus.next()
 
+
 //Próximo: Métodos de clase
+class SomeClass{
+    class func someMethod() {
+        print("Hola")
+    }
+}
+
+SomeClass.someMethod()
+
+
+struct LevelTracker{
+    static var highestUnlockedLevel = 1
+    var currentLevel = 1
+    
+    static func unlock(_ level: Int)
+    {
+        if level > highestUnlockedLevel
+        {
+            highestUnlockedLevel = level
+        }
+    }
+    
+    static func isUnlocked(_ level: Int) -> Bool{
+        return level <= highestUnlockedLevel
+    }
+    
+    mutating func advance(to level: Int) -> Bool{
+        if LevelTracker.isUnlocked(level) //No se puede llamar al método sin llamar el nombre de la clase. Es una función estática
+        {
+            self.currentLevel = level
+            return true
+        }else
+        {
+            return false
+        }
+    }
+    
+}
+
+
+class Player
+{
+    var tracker = LevelTracker() //Tiene un objeto estructura LevelTracker.
+    let playerName: String
+    
+    func complete(level: Int){
+        LevelTracker.unlock(level + 1) //Se llama a la estructura para correr el método unlock.
+        tracker.advance(to: level + 1) //Se llama al objeto como tal
+    }
+    
+    init(name: String) {
+        self.playerName = name
+    }
+}
+
+var player = Player(name: "Juan Sebastián")
+
+player.complete(level: 1)
+player
+player.complete(level: 7)
+player
+if player.tracker.advance(to: 7)
+{
+    print("Podemos avanzar al nivel 7!")
+}else{
+    print("El nivel 7 sigue bloqueado por ahora...")
+}
