@@ -63,10 +63,10 @@ let bodyTemperature = Celsius(37)
 
 class SurveyQuestion
 {
-    var text: String
+    let text: String
     var response: String?
     
-    init(text: String)
+    init(is text: String)
     {
         self.text = text
     }
@@ -77,8 +77,119 @@ class SurveyQuestion
     }
 }
 
-let q1 = SurveyQuestion(text: "¿Te gustan los tacos?")
+let q1 = SurveyQuestion(is: "¿Te gustan los tacos?")
 
-q1.ask()
+q1.ask() //Aquí solo había pregunta, la respuesta está nil
 q1.response = "Si, me encantan"
+
+
+let q2 = SurveyQuestion(is: "¿Cuál es tu curso favorito en Platzi?")
+let q3 = SurveyQuestion(is: "¿Cuál es tu edad?")
+
+
+//Inicializador designado -> super clase
+
+// Conveniencia -> Otro init de la misma clase
+
+//El último init que se llame debe ser designado.
+
+class Vehicle
+{
+    var numberOfWheels = 0
+    var description: String{
+        return "\(numberOfWheels) ruedas"
+    }
+}
+
+
+let vehicle = Vehicle()
+vehicle.description
+
+class Bycicle: Vehicle{
+    override init() { // Automática pone el override. Designado
+        super.init() // Hay que llamar el constructor del padre
+        numberOfWheels = 2
+    }
+}
+
+
+let bycicle = Bycicle()
+bycicle.description
+
+class Hoverboard: Vehicle
+{
+    var color: String
+    init(color: String) { // Init por conveniencia
+        self.color = color
+        
+        //Aquí se llama implícitamente a super.init()
+    }
+    
+    override var description: String
+    {
+        return "\(super.description) en el color \(self.color)"
+    }
+}
+
+let hoverboard = Hoverboard(color: "Silver")
+hoverboard.description //Uso la descripción del padre dentro de la descripción del hoverboard
+
+
+//Failable initializer
+
+enum TemperatureUnit
+{
+    case kelvin, celsius, fahrenheit
+    
+    init?(symbol: Character) { // init? es un failable initializer
+        switch symbol {
+        case "K":
+            self = .kelvin
+        case "C":
+            self = .celsius
+        case "F":
+            self = .fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+
+let someUnit = TemperatureUnit(symbol: "X")
+
+class Product
+{
+    let name: String
+    init?(name: String) {
+        if name.isEmpty
+        {
+            return nil
+        }
+        self.name = name
+    }
+}
+
+class CartItem: Product
+{
+    let quantity: Int
+    
+    init?(itemName: String, quantity: Int) {
+        if quantity < 1
+        {
+            return nil
+        }
+        self.quantity = quantity
+        super.init(name: itemName)
+    }
+}
+
+if let someSocks = CartItem(itemName: "Socks", quantity: 2) //Se imprime solo si ambas variables son distintas a nil
+{
+    print("\(someSocks.name) - \(someSocks.quantity)")
+}
+
+if let someSocks = CartItem(itemName: "", quantity: 1) //Se imprime solo si ambas variables son distintas a nil
+{
+    print("\(someSocks.name) - \(someSocks.quantity)")
+}
 
