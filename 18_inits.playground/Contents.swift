@@ -193,3 +193,48 @@ if let someSocks = CartItem(itemName: "", quantity: 1) //Se imprime solo si amba
     print("\(someSocks.name) - \(someSocks.quantity)")
 }
 
+// Deinit - Destrucción de objetos
+
+class Bank
+{
+    static var coinsInBank = 2_000
+    static func distribute(coins numberOfCoinsRequested: Int) -> Int
+    {
+        let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
+        coinsInBank -= numberOfCoinsToVend
+        return numberOfCoinsToVend
+    }
+    
+    static func receive(coins: Int)
+    {
+        coinsInBank += coins
+    }
+    
+}
+
+class Player
+{
+    var coinsInPurse: Int
+    init(_ coins: Int) {
+        self.coinsInPurse = Bank.distribute(coins: coins)
+    }
+    
+    func win(coins: Int)
+    {
+        coinsInPurse += Bank.distribute(coins: coins)
+    }
+    
+    deinit {
+        Bank.receive(coins: coinsInPurse) //Notifico al banco, al destruir el objeto las monedas se devuelven al banco.
+    }
+}
+
+var playerOne: Player? = Player(100)
+
+Bank.coinsInBank
+playerOne!.win(coins: 2000)
+Bank.coinsInBank
+playerOne = nil //Destrucción de jugador
+
+Bank.coinsInBank
+
