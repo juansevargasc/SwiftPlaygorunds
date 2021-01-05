@@ -33,6 +33,8 @@ if a == b
 -9 / 4
 -9 % 4
 
+9.0 / 4
+
 let five = 5
 let minusFive = -five
 let plusFive = -minusFive
@@ -58,6 +60,26 @@ number -= 2
 number /= 2
 number *= 12
 number %= 7 //number = number % 7
+
+//Truncating Remainder
+let someX = 8.625
+print(someX / 0.75)
+
+let q = (someX / 0.75).rounded(.towardZero)
+let r = someX.truncatingRemainder(dividingBy: 0.75)
+
+let x1 = 0.75 * q + r
+
+//Segundo ejemplo
+let a1 = 12.5
+print(a1 / 0.85) // 14.70588... - Este es el cociente sin truncar
+
+let b1 = (a1 / 0.85).rounded(.towardZero)// 14.0 - Este es el cociente truncado.
+var prueba = ( ( a1 / 0.85 ) - b1 ) * 0.85
+
+let t = a1.truncatingRemainder(dividingBy: 0.85)// 0.6
+
+let a2 = b1 * 0.85 + t // a = b * c + t
 
 //Comparaciones
 1 == 1
